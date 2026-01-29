@@ -1,0 +1,23 @@
+{
+  "name": "vercel_ai_sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.16",
+    "ai": "^6.0.59",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^25.1.0",
+    "typescript": "^5.9.3"
+  }
+}

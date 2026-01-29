@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    // Language and Environment
+    "target": "ES2022",                  // Compile to modern JavaScript
+    "lib": ["ES2022"],                   // Use ES2022 standard library features
+    "module": "commonjs",                // Use CommonJS for Node.js compatibility
+    
+    // Module Resolution
+    "moduleResolution": "node",          // Resolve modules like Node.js does
+    "resolveJsonModule": true,           // Allow importing JSON files
+    "esModuleInterop": true,             // Better interop between CommonJS and ES modules
+    
+    // Type Checking
+    "strict": true,                      // Enable all strict type checking options
+    "skipLibCheck": true,                // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure consistent file name casing
+    
+    // Emit
+    "outDir": "./dist",                  // Output compiled JavaScript to 'dist' folder
+    "rootDir": "./src",                  // Source TypeScript files are in 'src' folder
+    "declaration": true,                 // Generate .d.ts declaration files
+    "sourceMap": true                    // Generate source maps for debugging
+  },
+  "include": ["src/**/*"],               // Include all TypeScript files in src directory
+  "exclude": ["node_modules", "dist"]   // Don't compile these folders
+}
