@@ -6,12 +6,12 @@
   "scripts": {
     "build":"tsc",
     "start":"node dist/index.js",
-    "dev":"tsc && node dist/index.js"
+    "stream":"tsc && node dist/2_streaming.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@ai-sdk/google": "^3.0.16",
     "ai": "^6.0.59",
