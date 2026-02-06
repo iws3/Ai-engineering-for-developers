@@ -21,5 +21,11 @@ for await (const  chunk of result.textStream) {
 }
 
 
+// # Create a new script in package.json for this file
+// # Add to your "scripts" section:
+// "stream": "tsc && node dist/streaming.js"
+// # Then run:
+// npm run stream
+
 streamingExample()
 

@@ -15,7 +15,10 @@ async function main() {
     // Correct property access
     console.log(result.text)
     console.log(`Uses ${result.usage.totalTokens} tokens`);
-    console.log(`Finished because: ${result.finishReason}`)
+    console.log(`Finished because: ${result.finishReason}`);
+// console.log(`   Prompt tokens: ${result.usage?.promptTokens}`);
+// console.log(`Completion Tokens: ${result.usage?.completionToekns}`);
+console.log(`Total Tokens: ${result.usage.totalTokens}`)
 }
 
 main().catch(console.error)
