@@ -63,4 +63,17 @@ function buildTFIDFVectorizer(documents: string[]): TFIDFVectorizer {
 }
 
 
-// CONVERT A SINGLE VECTOR:
+// CONVERT A SINGLE DOCUMENT INTO A TF-IDF VECTOR
+// the vector will have one dimention for each word in the vocabulary
+
+function documentToTFIDFVector(
+  doc:string;
+  vectorizer:TFIDFVectorizer
+):number[] {
+  const tokens=tokenize(doc);
+  const vocabularySize=vectorizer.vocabulary.size;
+
+  // initialize vector with zeros (one dimension per vocabulary word)
+  const vector=new Array(vocabularySize).fill(0)
+
+}
