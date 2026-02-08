@@ -97,3 +97,12 @@ function documentToTFIDFVector(
 }
 
 // function cosine similarity
+
+function cosineSimilarity(vectorA:number[], vectorB:number[]):number {
+
+  if(vectorA.length!==vectorB.length) {
+    throw new Error('Vector must have the same length')
+  }
+
+  return 3
+}
