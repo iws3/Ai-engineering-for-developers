@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { Dummydocuments } from "./data.js";
 // TF-IDF -> CLASSICAL EMBEDDING APPROACH
 
 interface TFIDFVectorizer {
@@ -198,7 +199,7 @@ function experimentWithTFIDF(){
     "Deep learning algorithms require substantial computational power",
   ];
   console.log('\n Document Corpus:');
-  documents.forEach((doc, i)=>{
+  Dummydocuments.forEach((doc, i)=>{
     console.log(` ${i+1}. "${doc}`)
   })
 
