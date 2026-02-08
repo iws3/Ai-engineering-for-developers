@@ -67,13 +67,33 @@ function buildTFIDFVectorizer(documents: string[]): TFIDFVectorizer {
 // the vector will have one dimention for each word in the vocabulary
 
 function documentToTFIDFVector(
-  doc:string;
+  doc:string,
   vectorizer:TFIDFVectorizer
 ):number[] {
   const tokens=tokenize(doc);
   const vocabularySize=vectorizer.vocabulary.size;
 
-  // initialize vector with zeros
-  const vector=new Array(vocabularySize).fill(0)
+  // initialize vector with zeros (one dimensional per vector)
+  const vector=new Array(vocabularySize).fill(0);
+  // COUNT TERM FREQ IN THE DOCUMENT
 
+  const termFrequency=new Map<string, number>();
+  tokens.forEach(word=>{
+    termFrequency.set(word, (termFrequency.get(word) || 0) + 1);
+  })
+
+  // calculate TF-IDF for each word in the document
+  termFrequency.forEach((count, word)=>{
+    if(vectorizer.vocabulary.has(word)) {
+      const wordIndex=vectorizer.vocabulary.get(word)!;
+      const tf=count/tokens.length;
+      const idf=vectorizer.idf.get(word) || 0;
+      vector[wordIndex]=tf*idf;
+    }
+  })
+
+
+  return vector
 }
+
+// function cosine similarity
