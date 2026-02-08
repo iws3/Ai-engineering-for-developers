@@ -183,5 +183,27 @@ function euclideanDistance(vectorA:number[], vectorB:number[]):number{
 // NOW EXPERIMENTS WITH TF-IDF
 function experimentWithTFIDF(){
   console.log('\n' + '='.repeat(70));
+  console.log('EXPERIMENT1: TF-IDF Embeddings and Similarity Search');
+  console.log('='.repeat(70));
+
+  // create a small corpus of documents about different topics
+
+   const documents = [
+    "The cat sat on the mat and purred softly",
+    "A dog barked loudly in the park",
+    "The feline animal stretched and yawned on the rug",
+    "Machine learning models process large datasets",
+    "Neural networks learn patterns from data",
+    "The puppy played with a ball in the garden",
+    "Deep learning algorithms require substantial computational power",
+  ];
+  console.log('\n Document Corpus:');
+  documents.forEach((doc, i)=>{
+    console.log(` ${i+1}. "${doc}`)
+  })
+
+
 
 }
+
+experimentWithTFIDF()

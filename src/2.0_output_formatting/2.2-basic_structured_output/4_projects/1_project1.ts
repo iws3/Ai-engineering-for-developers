@@ -13,7 +13,7 @@ async function parseAppointment(userInput:string) {
     const appointmentSchema=z.object({
         title:z.string().describe("Brief title for the appointment"),
         data:z.string().describe("Data in YYYY-MM-DD format"),
-        startTime:z.string().describe("Start time in HH:MM 24-hour fformat");
+        startTime:z.string().describe("Start time in HH:MM 24-hour fformat"),
         endTime:z.string().describe("End time in HH:MM 24-hour format"),
 
         location:z.string().optional().describe("Where the appointment takes place, if mentioned"),
@@ -21,7 +21,7 @@ async function parseAppointment(userInput:string) {
 
         notes:z.string().optional().describe("Any additional notes or details"),
 
-    }),
+    });
 
     const result=await generateText({
         model:model,
