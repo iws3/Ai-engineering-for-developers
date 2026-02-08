@@ -104,5 +104,21 @@ function cosineSimilarity(vectorA:number[], vectorB:number[]):number {
     throw new Error('Vector must have the same length')
   }
 
+  // calculate the dot product : A.B
+  let dotProduct=0;
+  for(let i=0;i<vectorA.length;i++){
+    dotProduct+=vectorA[i]*vectorB[i];
+  }
+
+  // calculate the magnitude of A: |A|
+
+  let magnitudeA=0;
+  for(let i=0; i<vectorA.length; i++){
+    magnitudeA=vectorA[i] * vectorA[i]
+  }
+  magnitudeA=Math.sqrt(magnitudeA);
+
+  // calaculate the magnitude of B: |B|
+
   return 3
 }
