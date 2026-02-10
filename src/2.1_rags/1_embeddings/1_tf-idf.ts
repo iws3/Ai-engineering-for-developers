@@ -229,8 +229,19 @@ const query="Feline creatures resting on carpets";
 
 console.log(`\n Query: "${query}"`);
 const queryVector=documentToTFIDFVector(query, vectorizer);
-console.log(`document vector is: ${queryVector}`)
+console.log(`document vector is: ${queryVector}`);
+// Calculate similarity between query and each document
 
+const similarity=vectors.map((docVector, index)=>({
+  documentIndex:index,
+  document:Dummydocuments[index],
+  cosineSimilarity:cosineSimilarity(queryVector, docVector),
+  euclideanDistance:euclideanDistance(queryVector, docVector),
+}))
+
+// log the similarity object
+
+console.log(`Here is the similarity object: ${JSON.stringify(similarity,null,0)}`)
 }
 
 experimentWithTFIDF()
