@@ -241,7 +241,19 @@ const similarity=vectors.map((docVector, index)=>({
 
 // log the similarity object
 
-console.log(`Here is the similarity object: ${JSON.stringify(similarity,null,0)}`)
+// sort by cosine similarity- highest first
+similarity.sort((a,b)=>b.cosineSimilarity-a.cosineSimilarity)
+
+console.log(`Here is the similarity object: ${JSON.stringify(similarity,null,0)}`);
+
+console.log('\n SEARCH RESULTS {RANKED BY SIMILARITY}');
+similarity.forEach((result, rank)=>{
+  console.log(`\n Rank ${rank + 1}:`);
+  console.log(`Document: "${result.document}"`);
+  console.log(`Cosine similarity: ${result.cosineSimilarity.toFixed(4)}`);
+  console.log(`Euclidean Distance: ${result.euclideanDistance.toFixed(4)}`);
+})
+
 }
 
 experimentWithTFIDF()
