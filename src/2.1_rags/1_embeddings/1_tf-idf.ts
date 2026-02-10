@@ -206,7 +206,9 @@ function experimentWithTFIDF(){
   // build a tf-idf vectorizer
   console.log('\n Building tf-idf vectorizer...');
   const vectorizer=buildTFIDFVectorizer(Dummydocuments);
-  console.log(`Vocabulary size: ${vectorizer.vocabulary.size} unique words`)
+  console.log(`Vocabulary size: ${vectorizer.vocabulary.size} unique words`);
+  console.log(`Vectorizer is: ${JSON.stringify(vectorizer)}`);
+  console.log(`vectorizer idf: ${JSON.stringify(vectorizer.idf)}`)
 
   // EXAMINE SOME WORDS AND THEIR IDF-VALUES:
   console.log(`\n Simple IDF values (higher=score disitnctive):`);
