@@ -129,6 +129,7 @@ function cosineSimilarity(vectorA:number[], vectorB:number[]):number {
     dotProduct+=vectorA[i]*vectorB[i];
   }
 
+  console.log( `Dot product of ${vectorA} and ${vectorB} = ${dotProduct}`)
   // calculate the magnitude of A: |A|
 
   let magnitudeA=0;
@@ -137,12 +138,16 @@ function cosineSimilarity(vectorA:number[], vectorB:number[]):number {
   }
   magnitudeA=Math.sqrt(magnitudeA);
 
+  console.log(`Magnitude of ${vectorA}= ${magnitudeA}`)
+
   // calaculate the magnitude of B: |B|
   let magnitudeB = 0;
   for (let i = 0; i < vectorB.length; i++) {
     magnitudeB += vectorB[i] * vectorB[i];
   }
   magnitudeB = Math.sqrt(magnitudeB);
+
+  console.log(`Magnitude of vectorB is ${vectorB}`)
   
 
 // Avoid division by zero
