@@ -23,11 +23,15 @@ function fixedSizeChunking(text:string, chunkSize:number, overlapSize:number):Ch
 
     // split text into words (simple tokenization)
     const words=text.split(/\s+/);
+    console.log(`Printing text: ${words}`);
+    console.log(`Words length: ${words.length}`)
     let chunkNumber=0;
     let currentIndex=0;
 
     while(currentIndex< words.length) {
         const chunkWords=words.slice(currentIndex, currentIndex+chunkSize);
+        console.log(`Example Chunk 1 : ${chunkWords}`);
+        
 
         const chunkText=chunkWords.join(' ');
 
@@ -66,4 +70,4 @@ function fixedSizeChunking(text:string, chunkSize:number, overlapSize:number):Ch
 
 
 const fsc= fixedSizeChunking(sampleTechnicalDoc, 100, 20);
-console.log(`FSD: ${JSON.stringify(fsc)}`);
+// console.log(`FSD: ${JSON.stringify(fsc)}`);
