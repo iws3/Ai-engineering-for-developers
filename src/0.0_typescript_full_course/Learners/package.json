@@ -1,0 +1,22 @@
+{
+  "name": "typescript-learners-project",
+  "version": "1.0.0",
+  "description": "TypeScript Learning Project for Course Learners",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "node dist/test.js",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": ["TypeScript", "Learning", "AI", "Frontend"],
+  "author": "TypeScript Course Learners",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "prettier": "^3.0.0",
+    "eslint": "^8.54.0"
+  }
+}
