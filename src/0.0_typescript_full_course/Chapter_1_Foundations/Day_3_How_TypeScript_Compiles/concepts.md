@@ -1,3 +1,0 @@
-# Day 3: How TypeScript Compiles
-
-...existing content from previous Day_3_How_TypeScript_Compiles.md...

@@ -1,3 +1,0 @@
-# Day 8: Functions and Type Annotations
-
-...existing content from previous Day_8_Functions_and_Type_Annotations.md...

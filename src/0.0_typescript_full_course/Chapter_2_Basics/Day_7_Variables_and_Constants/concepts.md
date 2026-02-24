@@ -1,3 +1,0 @@
-# Day 7: Variables and Constants
-
-...existing content from previous Day_7_Variables_and_Constants.md...

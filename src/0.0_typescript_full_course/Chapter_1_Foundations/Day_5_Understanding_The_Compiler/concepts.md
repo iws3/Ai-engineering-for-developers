@@ -1,3 +1,0 @@
-# Day 5: Understanding The Compiler
-
-...existing content from previous Day_5_Understanding_The_Compiler.md...

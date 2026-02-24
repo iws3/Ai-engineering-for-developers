@@ -1,3 +1,0 @@
-# Day 6: Type System Fundamentals
-
-...existing content from previous Day_6_Type_System_Fundamentals.md...
