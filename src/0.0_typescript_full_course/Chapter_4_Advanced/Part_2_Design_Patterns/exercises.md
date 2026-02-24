@@ -1,13 +1,22 @@
-# Part: [TITLE] ‚Äî Exercises
+# Part 2: Design_Patterns ‚Äî Exercises
 
 ## Exercise 1 (Intermediate)
-[Exercise description]
+Implement a feature using advanced patterns from this part.
 
 ## Exercise 2 (Advanced)
-[Exercise description]
+Build a complete system demonstrating mastery of concepts.
 
 ## Challenge (Expert)
-[Challenge description]
+Create a production-ready solution with comprehensive testing and documentation.
 
-## Ì≥ù Examples & Solutions
-Include working code examples
+## Ì≥ù Advanced Tips
+- Consider type safety at all levels
+- Optimize for developer experience
+- Document complex type relationships
+- Follow enterprise standards
+
+## Ì¥ç Submission Requirements
+- Working code with examples
+- TypeScript strict mode compliance
+- Comprehensive type coverage
+- Clear documentation
