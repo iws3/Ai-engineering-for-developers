@@ -3,12 +3,15 @@
 ## 🎯 Learning Objectives
 
 After this part, you'll understand:
-- Difference between `const`, `let`, and `var`
-- When to use each declaration keyword
-- What immutability really means
-- Scope and where variables are accessible
-- Best practices for variable declaration
+- Difference between `const`, `let`, and `var` and when each applies
+- When to use each declaration keyword and why (const by default!)
+- What immutability really means (reference vs value mutation)
+- Scope and where variables are accessible (block, function, global)
+- Best practices for variable declaration and naming conventions
 - TypeScript type inference with variables
+- The Temporal Dead Zone and why it matters
+- Memory and performance implications of variable choices
+- Accessing variables across different scope levels
 
 ---
 
