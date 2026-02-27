@@ -450,6 +450,76 @@ let code = ERROR_CODE;  // code is 404 (literal)
 
 ---
 
+## 🔍 Advanced Type Narrowing with Predicates
+
+### Type Predicate Functions
+
+Type predicates let you create functions that narrow types:
+
+```typescript
+// Without type predicate - still a union
+function isString(value: unknown): boolean {
+  return typeof value === "string";
+}
+
+let data: string | number = "test";
+if (isString(data)) {
+  console.log(data.toUpperCase());  // ❌ TypeScript doesn't know it's string!
+}
+
+// With type predicate - TypeScript understands!
+function isStringTyped(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+if (isStringTyped(data)) {
+  console.log(data.toUpperCase());  // ✅ TypeScript knows it's string now!
+}
+```
+
+### Advanced Predicate Examples
+
+```typescript
+// Predicate for null/undefined
+function isDefined<T>(value: T | null | undefined): value is T {
+  return value !== null && value !== undefined;
+}
+
+const values: (number | null)[] = [1, null, 2, null, 3];
+const defined = values.filter(isDefined);
+// Type: number[] (null removed!)
+
+// Predicate for array elements
+function isString(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+const mixed: unknown[] = [1, "two", 3, "four"];
+const strings = mixed.filter(isString);
+// Type: string[]
+
+// Predicate for interface
+interface Admin {
+  role: "admin";
+  permissions: string[];
+}
+
+interface User {
+  role: "user";
+  email: string;
+}
+
+function isAdmin(account: Admin | User): account is Admin {
+  return account.role === "admin";
+}
+
+const accounts: (Admin | User)[] = [/* ... */];
+const adminAccounts = accounts.filter(isAdmin);
+// Type: Admin[]
+```
+
+---
+
 ## 🏆 Best Practices
 
 1. **Let TypeScript infer simple variables** - `const name = "Alice"` is fine
