@@ -8,7 +8,8 @@ const model = google("gemini-2.5-flash");
 // Tool 1: Get current weather
 const getWeather = tool({
   description: "Get current weather conditions for a city",
-  inputSchema: z.object({  // Changed from 'parameters' to 'inputSchema'
+  inputSchema: z.object({
+    // Changed from 'parameters' to 'inputSchema'
     city: z.string().describe('The city name, e.g. "Paris"'),
     country: z.string().describe("Country code, e.g. US, FR, JP"),
   }),
@@ -26,7 +27,8 @@ const getWeather = tool({
 // Tool 2: Search restaurants
 const searchRestaurants = tool({
   description: "Search for restaurants in a specific location",
-  inputSchema: z.object({  // Changed from 'parameters' to 'inputSchema'
+  inputSchema: z.object({
+    // Changed from 'parameters' to 'inputSchema'
     location: z.string().describe("City or neighbourhood"),
     cuisine: z.string().optional().describe("Type of cuisine to filter by"),
     priceRange: z
@@ -56,7 +58,8 @@ const searchRestaurants = tool({
 // Tool 3: Get traffic
 const getTraffic = tool({
   description: "Get current traffic conditions for a route",
-  inputSchema: z.object({  // Changed from 'parameters' to 'inputSchema'
+  inputSchema: z.object({
+    // Changed from 'parameters' to 'inputSchema'
     from: z.string().describe("Starting location"),
     to: z.string().describe("Destination"),
   }),
@@ -82,10 +85,30 @@ async function planEvening() {
       "I want to have dinner in downtown Paris tonight. What restaurants do you recommend, what's the weather like, and how long will it take to get there from the Eiffel Tower?",
   });
 
-console.log("loading...");
+  console.log("loading...");
+  console.log("Printing out content.........");
   console.log(result.content);
-  console.log(result.response);
+  let i = 0;
+  //    {
+  //     type: 'tool-result',
+  //     toolCallId: 'UbavZ8Dct1XN2Nxo',
+  //     toolName: 'searchRestaurants',
+  //     input: { location: 'downtown Paris' },
+  //     output: [ [Object], [Object] ],
+  //     dynamic: false,
+  //     providerMetadata: { google: [Object] }
+  //   },
+  for (const tool of result.content) {
+    i++;
+    if (tool.type === "tool-result") {
+      console.log(`${i}.TOOL CALL: ${tool.type}`);
+      console.log(`Tool Name: ${tool.toolName}`);
+      console.log(`Input: ${JSON.stringify(tool.input)}`);
+      console.log(`Output: ${JSON.stringify(tool.output)}`);
+    }
+  }
 
+  //   console.log(result.response.messages[0].content);
 }
 
 planEvening().catch(console.error);
