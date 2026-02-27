@@ -903,7 +903,105 @@ const user: User = {
 
 ---
 
-## ⚠️ Common Mistakes
+## 🏭 Type System in Real Applications
+
+### Web Application Example
+
+```typescript
+// User authentication system
+interface User {
+  id: number;
+  username: string;
+  email: string;
+  password: string;  // Hashed in real apps!
+  age: number;
+  isAdmin: boolean;
+  lastLogin: Date | null;  // null if never logged in
+  phone: string | null;    // Optional field
+}
+
+// API response
+interface ApiResponse {
+  status: 200 | 400 | 401 | 500;  // Only these status codes allowed
+  data: User | null;
+  error: string | null;
+  timestamp: Date;
+}
+
+function handleLoginResponse(response: ApiResponse): void {
+  if (response.status === 200 && response.data) {
+    // TypeScript knows data is User here, not null
+    console.log(`Welcome back, ${response.data.username}!`);
+    console.log(`Last login: ${response.data.lastLogin}`);  // Might be null
+  } else if (response.status === 401) {
+    console.log("Invalid credentials");
+  }
+}
+```
+
+**Benefits demonstrated:**
+- ✅ API structure is clear from types
+- ✅ Status codes restricted to valid options
+- ✅ `data` might be null - you must handle it
+- ✅ IDE helps with autocomplete
+- ✅ Refactoring is safe (rename field, compiler catches all usages)
+
+### E-Commerce Example
+
+```typescript
+// Product catalog
+interface Product {
+  id: string;                    // SKU or unique ID
+  name: string;
+  price: number;                 // In cents to avoid decimal issues
+  stock: number;                 // Quantity available
+  discount: number | null;       // Percentage off, or no discount
+  isFeatured: boolean;          // Show on homepage
+  tags: string[];                // Category tags
+}
+
+// Shopping cart
+interface CartItem {
+  product: Product;
+  quantity: number;
+  selectedColor?: string;        // Optional variant
+  selectedSize?: string;         // Optional variant
+}
+
+// Order
+interface Order {
+  id: string;
+  items: CartItem[];
+  total: number;                 // Calculated from items
+  status: "pending" | "confirmed" | "shipped" | "delivered" | "cancelled";
+  createdAt: Date;
+  completedAt: Date | null;
+}
+
+function calculateTotal(items: CartItem[]): number {
+  let total = 0;
+  
+  for (const item of items) {
+    const unitPrice = item.product.price;
+    const discount = item.product.discount ? item.product.discount / 100 : 0;
+    const finalPrice = unitPrice * (1 - discount);
+    
+    total += finalPrice * item.quantity;
+  }
+  
+  return total;
+}
+
+// TypeScript ensures:
+// - Product exists and has required properties
+// - Number operations are safe (can't multiply by string)
+// - Status is only valid values
+// - completedAt might be null - you handle it
+```
+
+---
+
+## 📏 Type System Mindset
 
 ### Mistake 1: Confusing null/undefined
 
