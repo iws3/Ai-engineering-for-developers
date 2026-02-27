@@ -439,7 +439,147 @@ const enum Status {
 
 ---
 
-## 🏆 Best Practices
+## �️ Literal Types vs Enums: Deep Comparison
+
+Both constrain values to specific options - but which to use?
+
+### Literal Types (Modern Approach)
+
+```typescript
+// Define as union of literals
+type UserRole = "admin" | "user" | "guest";
+
+function checkPermissions(role: UserRole): void {
+  if (role === "admin") {
+    console.log("Full access");
+  } else if (role === "user") {
+    console.log("Limited access");
+  } else {
+    console.log("No access");
+  }
+}
+
+checkPermissions("admin");    // ✅ OK
+checkPermissions("superuser"); // ❌ ERROR: not in union
+```
+
+### Enums (Legacy/Complex Cases)
+
+```typescript
+// Define as enum
+enum UserRole {
+  Admin = "admin",
+  User = "user",
+  Guest = "guest"
+}
+
+function checkPermissions(role: UserRole): void {
+  if (role === UserRole.Admin) {
+    console.log("Full access");
+  } else if (role === UserRole.User) {
+    console.log("Limited access");
+  } else {
+    console.log("No access");
+  }
+}
+
+checkPermissions(UserRole.Admin);  // ✅ OK
+checkPermissions("admin");         // ❌ ERROR: string not assignable to enum!
+```
+
+### Comparison Table
+
+| Feature | Literal Type | Enum |
+|---------|------------|------|
+| **Simple to define** | ✓ Yes | Good |
+| **Works with strings directly** | ✓ Yes | No (must use enum name) |
+| **Runtime code generation** | No | ✓ Creates object |
+| **Tree-shaking friendly** | ✓ Yes | No excess code |
+| **Interoperating with APIs** | ✓ Easier | Less flexible |
+| **Large sets of values** | Verbose | ✓ Cleaner |
+| **Complex logic per value** | Need separate object | Can attach methods |
+| **Discriminated unions** | ✓ Perfect | Possible but awkward |
+
+### Real-World Choice
+
+```typescript
+// ✓ Use literal types (modern, preferred)
+type PaymentStatus = "pending" | "completed" | "failed" | "refunded";
+
+// When simple:
+function handlePayment(status: PaymentStatus) {
+  // Handle different statuses
+}
+
+// If you need data associated with each value:
+type PaymentStatusDetail = 
+  | { status: "pending"; retryAt: Date }
+  | { status: "completed"; receivedAt: Date }
+  | { status: "failed"; error: string }
+  | { status: "refunded"; refundAmount: number };
+
+// ✓ Use enums when (rare):
+// - You need a namespace and computed values  
+// - Working with legacy code
+// - Performance-critical (unlikely to matter)
+
+enum SeasonIndex {
+  Spring = 0,
+  Summer = 1,
+  Fall = 2,
+  Winter = 3
+}
+```
+
+---
+
+## 💾 Runtime Behavior
+
+### String Literals (No Runtime Cost)
+
+```typescript
+type Status = "active" | "inactive";
+
+const status: Status = "active";
+console.log(status);  // "active" - no wrapper object
+
+// Compiled JavaScript: just a string
+```
+
+### Enums (Creates an Object)
+
+```typescript
+enum Status {
+  Active = "active",
+  Inactive = "inactive"
+}
+
+const status: Status = Status.Active;
+console.log(status);  // "active"
+
+// Compiled JavaScript creates an object:
+// var Status;
+// (function (Status) {
+//   Status["Active"] = "active";
+//   Status["Inactive"] = "inactive";
+// })(Status || (Status = {}));
+```
+
+### Const Enums (Inlined)
+
+```typescript
+const enum Status {
+  Active = "active",
+  Inactive = "inactive"
+}
+
+// Compiled to pure literals - no object created
+// But can't access Status object at runtime!
+```
+
+---
+
+## �🏆 Best Practices
 
 1. **Prefer literal types** for new projects - simpler and more modern
 2. **Use enums** for larger sets of related values or when namespace is needed
