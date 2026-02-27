@@ -4,11 +4,14 @@
 
 After this part, you'll understand:
 - What a type system is and why it matters
-- All primitive types in TypeScript
-- Type annotations and syntax
-- Type inference basics
-- When and how to use the `any` type
-- Type checking in action
+- All primitive types in TypeScript and their use cases
+- Type annotations and syntax with real-world examples
+- Type inference basics and when to rely on it
+- When and how to use the `any` type (and why to avoid it)
+- Type checking in action with practical examples
+- The relationship between JavaScript types and TypeScript types
+- How types prevent common runtime errors
+- Memory and performance implications of type choices
 
 ---
 
