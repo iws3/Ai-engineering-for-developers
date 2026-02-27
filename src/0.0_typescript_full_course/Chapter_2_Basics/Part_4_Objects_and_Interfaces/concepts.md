@@ -3,13 +3,15 @@
 ## 🎯 Learning Objectives
 
 After this part, you'll understand:
-- What objects are and how to type them
-- How to define interfaces
-- Optional and readonly properties
-- Nested objects and complex structures
-- Interface inheritance and composition
-- Index signatures for dynamic properties
+- What objects are and how to type them comprehensively
+- How to define interfaces and when to use them
+- Optional and readonly properties and their implications
+- Nested objects and complex structures with deep types
+- Interface inheritance, composition, and extension patterns
+- Index signatures for dynamic properties with type safety
 - Difference between interface and type (preview)
+- Object literal typing and structural compatibility
+- When to use interfaces vs types in different scenarios
 
 ---
 
