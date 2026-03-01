@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "tool": "tsc && nodemon dist/3.0_tool_calling/4_multiple_tool_call_maximal_tool_round.js"
+    "tool": "tsc && nodemon dist/3.0_tool_calling/5_tools_result.js"
   },
   "keywords": [],
   "author": "",
