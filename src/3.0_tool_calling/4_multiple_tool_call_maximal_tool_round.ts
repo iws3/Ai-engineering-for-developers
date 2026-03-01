@@ -56,6 +56,20 @@ const searchEvents = tool({
   },
 });
 
+const checkGceResults=tool({
+    description:"check users gce results",
+    inputSchema:z.object({
+        username:z.string().describe("the username to check")
+    }),
+
+    execute:async ({username})=>{
+        return {
+            name:"Fonyuy Gita",
+            numPapers:"10"
+        }
+    }
+})
+
 async function recommendEvents() {
   console.log("\n🤖 Starting multi-step tool execution...\n");
   
@@ -64,11 +78,13 @@ async function recommendEvents() {
     tools: {
       getUserInfo,
       searchEvents,
+      checkGceResults
     },
     // ✅ AI SDK v5+ uses stopWhen instead of maxSteps
     stopWhen: stepCountIs(5), // Allow up to 5 steps
     prompt: "What events would be good for user-123 based on their interests?",
   });
+  console.log(result)
 
   console.log("\n📋 FINAL AI RESPONSE:");
   console.log("=".repeat(70));
