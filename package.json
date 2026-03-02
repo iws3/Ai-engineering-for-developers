@@ -14,6 +14,7 @@
   "type": "module",
   "dependencies": {
     "@ai-sdk/google": "^3.0.16",
+    "@ai-sdk/groq": "^3.0.26",
     "ai": "^6.0.59",
     "dotenv": "^17.2.3",
     "zod": "^4.3.6"
