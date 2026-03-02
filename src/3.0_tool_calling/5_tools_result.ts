@@ -1,3 +1,6 @@
+// The result.toolCalls array contains information about every tool the AI decided to call. Each tool call has the tool name, the arguments the AI generated, and a unique ID. The result.toolResults array contains what each tool execution returned. For multi-step executions, result.steps is an array where each element represents one round of AI processing, including which tools were called in that round and their results.
+// This metadata is valuable for debugging, logging, and understanding what your AI agent is doing. You can track which tools are used most frequently, see what parameters the AI is generating, and identify when the AI makes unexpected or incorrect tool calls.
+
 import { generateText, stepCountIs, tool } from "ai";
 import { groq } from "@ai-sdk/groq";
 import { z } from "zod";
