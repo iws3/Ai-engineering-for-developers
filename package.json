@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "tool": "tsc && nodemon dist/3.0_tool_calling/5_tools_result.js"
+    "tool": "tsc && nodemon dist/3.0_tool_calling/projects/1_pan_trips.js"
   },
   "keywords": [],
   "author": "",
