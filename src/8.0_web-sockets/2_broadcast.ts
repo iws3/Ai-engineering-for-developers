@@ -8,7 +8,7 @@
 
 import {WebSocketServer, WebSocket} from 'ws'
 
-const wss=new WebSocketServer({port:808});
+const wss=new WebSocketServer({port:8080});
 console.log('WebSocket server is running on ws://localhost:8080');
 
 
@@ -33,7 +33,7 @@ function broadcast(wss: WebSocketServer, message:ServerMessage, exclude?:WebSock
 // This avoids sending the message back to the sender.
 wss.on("connection", (ws:WebSocket)=>{
 
-    ws.on('messsage', (data:Buffer)=>{
+    ws.on('message', (data:Buffer)=>{
         const message=JSON.parse(data.toString());
         // broadcast to everyone except the sender
         broadcast(wss, {

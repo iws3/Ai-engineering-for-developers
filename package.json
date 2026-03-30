@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "socket": "tsc && nodemon dist/8.0_web-sockets/2_broadcast.js"
+    "socket": "tsc && nodemon dist/8.0_web-sockets/3_server-with-auth.js"
   },
   "keywords": [],
   "author": "",
