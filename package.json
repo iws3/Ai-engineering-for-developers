@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "tool": "tsc && nodemon dist/3.0_tool_calling/projects/1_pan_trips.js"
+    "socket": "tsc && nodemon dist/8.0_web-sockets/1_ws.js"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +17,13 @@
     "@ai-sdk/groq": "^3.0.26",
     "ai": "^6.0.59",
     "dotenv": "^17.2.3",
+    "ws": "^8.20.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/node": "^25.1.0",
+    "@types/ws": "^8.18.1",
     "typescript": "^5.9.3"
   }
 }

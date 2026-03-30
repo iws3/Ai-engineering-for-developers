@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+const ws = new WebSocket('ws://localhost:8080');
+
+ws.onopen = () => {
+  console.log('Connected!');
+  ws.send(JSON.stringify({ test: 'hello server' }));
+};
+
+ws.onmessage = (event) => {
+  console.log('Received:', event.data);
+};
+
+ws.onerror = (err) => console.error(err);
+</script>
+</body>
+</html>
