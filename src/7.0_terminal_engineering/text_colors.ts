@@ -42,6 +42,17 @@ console.log("hello there")
 
 console.log(RESET)
 
+// 2.3 256-Color and True Color (RGB)
+// The basic 16-color palette is fine for simple programs, but modern terminals support 256 colors and
+// even 24-bit RGB color (called 'true color'). These use extended SGR sequences with additional
+// parameters:
+
+
+
+const color256 = (n: number) => `${ESC}[38;5;${n}m`;
+const bg256 = (n: number) => `${ESC}[48;5;${n}m`;
+
+
 // Usage: always reset after coloring text.
 process.stdout.write(
  `${colors.red}${style.underline}Success!${RESET} Operation complete.\n`
