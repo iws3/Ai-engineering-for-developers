@@ -42,7 +42,7 @@ console.log("hello there")
 
 console.log(RESET)
 
-// 2.3 256-Color and True Color (RGB)
+// 
 // The basic 16-color palette is fine for simple programs, but modern terminals support 256 colors and
 // even 24-bit RGB color (called 'true color'). These use extended SGR sequences with additional
 // parameters:
@@ -59,3 +59,28 @@ process.stdout.write(
 );
 
 
+// // 2.3 256-Color and True Color (RGB)
+// The basic 16-color palette is fine for simple programs, but modern terminals support 256 colors and
+// even 24-bit RGB color (called 'true color'). These use extended SGR sequences with additional
+// parameters:
+// 256-Color mode: codes 38;5<n> for foreground, 48;5<n> for background
+
+// The color index n ranges from 0 (black) to 255 (high white).
+
+// indices 0-15: standard colrs, 16-231: a 6x6x6 color cube,
+// and 232-255: a grayscale ramp. For example, color 196 is bright red, and 46 is bright green.
+
+// True color (24-bit RGB): codes 38;2;<r>;<g>;<b>
+// This is exactly like CSS rgb() — full 16 million color support. For example, 38;2;255;0;0 is bright red, and 38;2;0;255;0 is bright green.
+
+const colorRGB=(r:number, g:number, b:number)=>`${ESC}[38;2;${g};${b}m`;
+const bgRGB=(r:number, g:number, b:number)=>`${ESC}[48;2;${r};${g};{b}m`;
+
+// example draw a gradient of reds across a line.
+let gradient="";
+for (let i=0;i<40;i++){
+  const r=Math.round((i/39)*255);
+  gradient+=`${bgRGB(r,0,0)}`;
+}
+console.log("drawing.........")
+process.stdout.write(gradient + RESET + "\n");
