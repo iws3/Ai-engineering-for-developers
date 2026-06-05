@@ -73,14 +73,23 @@ process.stdout.write(
 // True color (24-bit RGB): codes 38;2;<r>;<g>;<b>
 // This is exactly like CSS rgb() — full 16 million color support. For example, 38;2;255;0;0 is bright red, and 38;2;0;255;0 is bright green.
 
-const colorRGB=(r:number, g:number, b:number)=>`${ESC}[38;2;${g};${b}m`;
-const bgRGB=(r:number, g:number, b:number)=>`${ESC}[48;2;${r};${g};{b}m`;
-
+const colorRGB=(r:number, g:number, b:number)=>`${ESC}[38;2;${r};${g};${b}m`;
+const bgRGB = (r: number, g: number, b: number) =>
+`${ESC}[48;2;${r};${g};${b}m`;
 // example draw a gradient of reds across a line.
-let gradient="";
+let gradient1="";
+let gradient2="";
+let gradient3="";
+
 for (let i=0;i<40;i++){
   const r=Math.round((i/39)*255);
-  gradient+=`${bgRGB(r,0,0)}`;
+  gradient1+=`${bgRGB(0,  r,  0)}  `;
+  gradient2+=`${bgRGB(r,  0,  0)}  `;
+  gradient3+=`${bgRGB(0,  0,  r)}  `;
+
+
 }
-console.log("drawing.........")
-process.stdout.write(gradient + RESET + "\n");
+// console.log("drawing.........")
+process.stdout.write(gradient1 + RESET + "\n");
+process.stdout.write(gradient2 + RESET + "\n");
+process.stdout.write(gradient3 + RESET + "\n");
