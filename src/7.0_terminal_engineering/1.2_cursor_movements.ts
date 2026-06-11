@@ -3,7 +3,7 @@
 // cursor control you can only add text at the bottom of whatever was printed last. With cursor control you
 // can redraw any part of the screen at any time — the foundation of all animation and UI updates.
 
-// const ESC="\x1b";
+const ESC="\x1b";
 // cursor movements commands:
 // tHESE ALL end with a LETTER that identifies the command type:
 export const cursor = {

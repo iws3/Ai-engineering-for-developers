@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h2>WebSocket Client</h2>
+    <input type="text" id="messageInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+    <div id="messages"></div>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');
+        const messagesDiv = document.getElementById('messages');
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            const msgElement = document.createElement('p');
+            msgElement.textContent = `[${data.timestamp}] ${data.type}: ${data.payload}`;
+            messagesDiv.appendChild(msgElement);
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            ws.send(JSON.stringify(input.value));
+            // Note: We don't append the message to the UI here manually 
+            // so we can prove that the server is NOT sending it back to us.
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
